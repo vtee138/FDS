@@ -1,0 +1,61 @@
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Build outputs
+dist/
+build/
+.next/
+out/
+.nuxt/
+.output/
+coverage/
+
+# TypeScript / tooling cache
+*.tsbuildinfo
+.turbo/
+.vite/
+.eslintcache
+.cache/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment files
+.env
+.env.*
+!.env.example
+!.env.sample
+
+# Prisma / database
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+
+# Docker / local runtime
+docker-compose.override.yml
+tmp/
+temp/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+
+# Package manager
+.npm/
+.pnpm-store/
+.yarn/cache/
+.yarn/unplugged/
+.yarn/build-state.yml
+.yarn/install-state.gz
