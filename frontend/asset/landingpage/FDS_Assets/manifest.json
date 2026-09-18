@@ -1,0 +1,234 @@
+[
+  {
+    "path": "ANTIGRAVITY_ROUND2_PROMPT.md",
+    "bytes": 13215
+  },
+  {
+    "path": "ANTIGRAVITY_ROUND3_VISUAL_MATCH_PROMPT.md",
+    "bytes": 11140
+  },
+  {
+    "path": "ANTIGRAVITY_ROUND4_VISUAL_REFINEMENT_PROMPT.md",
+    "bytes": 7057
+  },
+  {
+    "path": "ASSET_MAP.md",
+    "bytes": 5239
+  },
+  {
+    "path": "ASSET_GAP_AUDIT.md",
+    "bytes": 2942
+  },
+  {
+    "path": "CACH_GEN_CHU.md",
+    "bytes": 5961
+  },
+  {
+    "path": "CONTENT_BRIEF.md",
+    "bytes": 11451
+  },
+  {
+    "path": "HUONG_DAN_AGENT.md",
+    "bytes": 4907
+  },
+  {
+    "path": "PATTERN_SYSTEM.md",
+    "bytes": 6648
+  },
+  {
+    "path": "TYPOGRAPHY.md",
+    "bytes": 7400
+  },
+  {
+    "path": "frontend/public/fds/asset-usage.css",
+    "bytes": 2164
+  },
+  {
+    "path": "frontend/public/fds/backgrounds/footer-wash.svg",
+    "bytes": 360
+  },
+  {
+    "path": "frontend/public/fds/backgrounds/paper-light.png",
+    "bytes": 1673710
+  },
+  {
+    "path": "frontend/public/fds/backgrounds/paper-editorial-v2.png",
+    "bytes": 1872291
+  },
+  {
+    "path": "frontend/public/fds/backgrounds/paper-newspaper-v3.webp",
+    "bytes": 200804
+  },
+  {
+    "path": "frontend/public/fds/brand/fds-wordmark-authentic-navy.png",
+    "bytes": 6005
+  },
+  {
+    "path": "frontend/public/fds/brand/fds-wordmark-authentic-white.png",
+    "bytes": 6003
+  },
+  {
+    "path": "frontend/public/fds/brand/fds-wordmark-white.svg",
+    "bytes": 228749
+  },
+  {
+    "path": "frontend/public/fds/brand/fds-wordmark.svg",
+    "bytes": 228749
+  },
+  {
+    "path": "frontend/public/fds/decorations/about-edge-hex.svg",
+    "bytes": 376
+  },
+  {
+    "path": "frontend/public/fds/decorations/about-note-connector.svg",
+    "bytes": 431
+  },
+  {
+    "path": "frontend/public/fds/decorations/achievements-hex-cluster.svg",
+    "bytes": 462
+  },
+  {
+    "path": "frontend/public/fds/decorations/community-hex-chain.svg",
+    "bytes": 507
+  },
+  {
+    "path": "frontend/public/fds/decorations/editorial-blueprint-loops.svg",
+    "bytes": 988
+  },
+  {
+    "path": "frontend/public/fds/decorations/fields-heading-hex.svg",
+    "bytes": 415
+  },
+  {
+    "path": "frontend/public/fds/decorations/fields-hex-cluster.svg",
+    "bytes": 512
+  },
+  {
+    "path": "frontend/public/fds/decorations/hero-frame.svg",
+    "bytes": 340
+  },
+  {
+    "path": "frontend/public/fds/decorations/hero-hex-rings.svg",
+    "bytes": 521
+  },
+  {
+    "path": "frontend/public/fds/decorations/hero-technical-frame.svg",
+    "bytes": 674
+  },
+  {
+    "path": "frontend/public/fds/decorations/hex-corner-left.svg",
+    "bytes": 306
+  },
+  {
+    "path": "frontend/public/fds/decorations/hex-network.svg",
+    "bytes": 422
+  },
+  {
+    "path": "frontend/public/fds/decorations/journey-corner-hex.svg",
+    "bytes": 485
+  },
+  {
+    "path": "frontend/public/fds/decorations/journey-hex-route.svg",
+    "bytes": 561
+  },
+  {
+    "path": "frontend/public/fds/decorations/micro-node-line.svg",
+    "bytes": 313
+  },
+  {
+    "path": "frontend/public/fds/decorations/note-connector.svg",
+    "bytes": 265
+  },
+  {
+    "path": "frontend/public/fds/decorations/note-paper.svg",
+    "bytes": 842
+  },
+  {
+    "path": "frontend/public/fds/decorations/section-left-hex-fragment.svg",
+    "bytes": 345
+  },
+  {
+    "path": "frontend/public/fds/decorations/tape-blue.svg",
+    "bytes": 249
+  },
+  {
+    "path": "frontend/public/fds/decorations/tape-neutral.svg",
+    "bytes": 175
+  },
+  {
+    "path": "frontend/public/fds/decorations/technical-corner-lines.svg",
+    "bytes": 371
+  },
+  {
+    "path": "frontend/public/fds/hero/hand-network.png",
+    "bytes": 810756
+  },
+  {
+    "path": "frontend/public/fds/icons/academic.svg",
+    "bytes": 235
+  },
+  {
+    "path": "frontend/public/fds/icons/ai-network.svg",
+    "bytes": 394
+  },
+  {
+    "path": "frontend/public/fds/icons/arrow-right.svg",
+    "bytes": 199
+  },
+  {
+    "path": "frontend/public/fds/icons/community.svg",
+    "bytes": 338
+  },
+  {
+    "path": "frontend/public/fds/icons/data-engineering.svg",
+    "bytes": 258
+  },
+  {
+    "path": "frontend/public/fds/icons/data-science.svg",
+    "bytes": 217
+  },
+  {
+    "path": "frontend/public/fds/icons/project.svg",
+    "bytes": 219
+  },
+  {
+    "path": "frontend/public/fds/icons/research.svg",
+    "bytes": 230
+  },
+  {
+    "path": "frontend/public/fds/lettering/about-note.svg",
+    "bytes": 225623
+  },
+  {
+    "path": "frontend/public/fds/lettering/activities-community.svg",
+    "bytes": 164277
+  },
+  {
+    "path": "frontend/public/fds/lettering/activities-list.svg",
+    "bytes": 267337
+  },
+  {
+    "path": "frontend/public/fds/lettering/activities-together.svg",
+    "bytes": 230502
+  },
+  {
+    "path": "frontend/public/fds/lettering/footer-note-white.svg",
+    "bytes": 261901
+  },
+  {
+    "path": "frontend/public/fds/lettering/footer-note.svg",
+    "bytes": 261901
+  },
+  {
+    "path": "frontend/public/fds/lettering/hero-note.svg",
+    "bytes": 268058
+  },
+  {
+    "path": "reference/approved-design.png",
+    "bytes": 2049224
+  },
+  {
+    "path": "reference/lettering-logo-preview.png",
+    "bytes": 332482
+  }
+]
