@@ -42,7 +42,6 @@ pnpm-debug.log*
 docker-compose.override.yml
 tmp/
 temp/
-scratch/
 
 # OS / editor
 .DS_Store
