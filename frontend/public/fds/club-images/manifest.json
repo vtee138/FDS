@@ -1,0 +1,74 @@
+[
+  {
+    "source": "616129342_1863972417770456_7662387902116550847_n.jpg",
+    "target": "about-members.webp",
+    "width": 2048,
+    "height": 1365,
+    "aspectRatio": "1.50",
+    "sizeKB": 126,
+    "label": "4 members studying/discussing around table with laptops"
+  },
+  {
+    "source": "727814682_1992532908247739_1034052717505110688_n.jpg",
+    "target": "activity-workshop.webp",
+    "width": 2048,
+    "height": 1536,
+    "aspectRatio": "1.33",
+    "sizeKB": 293,
+    "label": "Mentors guiding students on computer monitor in workshop"
+  },
+  {
+    "source": "615889443_1863970721103959_8416265136728213517_n.jpg",
+    "target": "activity-community.webp",
+    "width": 2048,
+    "height": 1365,
+    "aspectRatio": "1.50",
+    "sizeKB": 233,
+    "label": "Member group holding FPTU Data Science Club banner in room"
+  },
+  {
+    "source": "724073055_1986550552179308_3448087752151029248_n.jpg",
+    "target": "activity-presentation.webp",
+    "width": 2048,
+    "height": 1365,
+    "aspectRatio": "1.50",
+    "sizeKB": 158,
+    "label": "Two members sitting at table discussing intently during seminar"
+  },
+  {
+    "source": "543423632_1755306711970361_2391498475170826006_n.jpg",
+    "target": "club-shirt-slogan.webp",
+    "width": 2048,
+    "height": 1365,
+    "aspectRatio": "1.50",
+    "sizeKB": 144,
+    "label": "Members wearing club t-shirt with Insights in our eyes slogan"
+  },
+  {
+    "source": "618066395_1864633574371007_5377117746939391068_n.jpg",
+    "target": "club-fair-booth.webp",
+    "width": 2048,
+    "height": 1152,
+    "aspectRatio": "1.78",
+    "sizeKB": 204,
+    "label": "FDS Club fair booth with draped banner and memory photo frames"
+  },
+  {
+    "source": "722754977_1988975965270100_299189141934935235_n.jpg",
+    "target": "club-prom-stage.webp",
+    "width": 2896,
+    "height": 1448,
+    "aspectRatio": "2.00",
+    "sizeKB": 306,
+    "label": "Stage photo with FDS members wearing formal attire and sash"
+  },
+  {
+    "source": "723209120_1986596945508002_8861043823971792034_n.jpg",
+    "target": "club-prom-gathering.webp",
+    "width": 2048,
+    "height": 1152,
+    "aspectRatio": "1.78",
+    "sizeKB": 213,
+    "label": "Full hall group photo with club hand gesture in auditorium"
+  }
+]

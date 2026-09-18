@@ -1,0 +1,75 @@
+{
+  "imageAudit": {
+    "about": {
+      "src": "http://localhost:3000/_next/image?url=%2Ffds%2Fclub-images%2Fabout-members.webp&w=3840&q=75",
+      "alt": "Các thành viên FDS thảo luận và nghiên cứu dữ liệu cùng nhau",
+      "naturalWidth": 310,
+      "naturalHeight": 206,
+      "renderedWidth": 299,
+      "renderedHeight": 229,
+      "objectFit": "cover",
+      "objectPosition": "50% 35%"
+    },
+    "activities": [
+      {
+        "src": "http://localhost:3000/_next/image?url=%2Ffds%2Fclub-images%2Factivity-workshop.webp&w=3840&q=75",
+        "alt": "Thành viên FDS hướng dẫn kỹ thuật trong một buổi workshop chuyên môn",
+        "naturalWidth": 235,
+        "naturalHeight": 176,
+        "renderedWidth": 223,
+        "renderedHeight": 145,
+        "objectFit": "cover",
+        "objectPosition": "50% 25%"
+      },
+      {
+        "src": "http://localhost:3000/_next/image?url=%2Ffds%2Fclub-images%2Factivity-presentation.webp&w=3840&q=75",
+        "alt": "Các thành viên FDS trao đổi và thảo luận tại sự kiện câu lạc bộ",
+        "naturalWidth": 175,
+        "naturalHeight": 116,
+        "renderedWidth": 165,
+        "renderedHeight": 203,
+        "objectFit": "cover",
+        "objectPosition": "55% 35%"
+      },
+      {
+        "src": "http://localhost:3000/_next/image?url=%2Ffds%2Fclub-images%2Factivity-community.webp&w=3840&q=75",
+        "alt": "Tập thể thành viên CLB FDS chụp ảnh kỷ niệm cùng banner FPTU Data Science Club",
+        "naturalWidth": 305,
+        "naturalHeight": 203,
+        "renderedWidth": 290,
+        "renderedHeight": 166,
+        "objectFit": "cover",
+        "objectPosition": "50% 35%"
+      }
+    ]
+  },
+  "clubImageResponses": [],
+  "consoleErrors": [],
+  "overflowResults": [
+    {
+      "width": 320,
+      "scrollWidth": 320,
+      "overflow": false
+    },
+    {
+      "width": 375,
+      "scrollWidth": 375,
+      "overflow": false
+    },
+    {
+      "width": 768,
+      "scrollWidth": 768,
+      "overflow": false
+    },
+    {
+      "width": 1024,
+      "scrollWidth": 1024,
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "scrollWidth": 1440,
+      "overflow": false
+    }
+  ]
+}

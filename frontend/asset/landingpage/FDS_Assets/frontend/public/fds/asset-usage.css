@@ -1,0 +1,18 @@
+/* Import tại stylesheet toàn cục; public chỉ phục vụ file, không tự áp CSS. */
+.fds-page { background-color:#F2F6FB; background-image:url('/fds/backgrounds/paper-newspaper-v3.webp'); background-repeat:repeat; background-size:627px 627px; color:#07152F; }
+.fds-paper-section { position: relative; isolation: isolate; }
+.fds-paper-section::before { content:""; position:absolute; inset:0; z-index:-1; pointer-events:none; background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(225,237,250,.08)); }
+.fds-paper-editorial { position:relative; isolation:isolate; background-color:transparent; }
+.fds-paper-editorial::before { content:""; position:absolute; inset:0; z-index:-2; pointer-events:none; background:radial-gradient(ellipse 52% 22% at 18% 8%,rgba(71,126,197,.055),transparent 72%),radial-gradient(ellipse 48% 20% at 78% 62%,rgba(78,130,196,.045),transparent 74%); }
+.fds-hero-art { display:block; width:100%; height:auto; object-fit:contain; }
+.fds-lettering { display:block; width:clamp(100px,12vw,180px); height:auto; }
+.fds-footer-lettering { width:clamp(130px,14vw,190px); height:auto; }
+.fds-wordmark { display:block; width:clamp(136px,10.8vw,156px); height:auto; opacity:1; filter:none; }
+.fds-footer-wordmark { display:block; width:clamp(148px,11.5vw,168px); height:auto; opacity:1; filter:none; }
+.fds-pattern { pointer-events:none; position:absolute; width:clamp(120px,23vw,320px); opacity:.55; }
+.fds-pattern-secondary { pointer-events:none; position:absolute; width:clamp(280px,48vw,720px); opacity:.16; }
+.fds-card-watermark { pointer-events:none; position:absolute; width:clamp(110px,16vw,220px); opacity:.055; mix-blend-mode:multiply; }
+.fds-footer { background:#07152F url('/fds/backgrounds/footer-wash.svg') center / cover no-repeat; color:#F5F7FB; }
+.fds-title { font-family:var(--font-display),'Playfair Display',Georgia,serif; font-weight:600; letter-spacing:-.035em; }
+.fds-body { font-family:var(--font-sans),'Be Vietnam Pro',Arial,sans-serif; line-height:1.6; }
+@media(max-width:640px){ .fds-lettering{width:110px;} .fds-pattern{opacity:.36;} .fds-pattern-secondary{opacity:.12;} .fds-card-watermark{opacity:.04;} }
