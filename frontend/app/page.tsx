@@ -18,7 +18,7 @@ import {
 
 export default function Home() {
   return (
-    <div className="min-h-screen fds-page selection:bg-[#2457A6] selection:text-white flex flex-col">
+    <div className="min-h-screen fds-page flex flex-col">
       {/* 1. Header & Navigation */}
       <Navbar />
 
@@ -29,32 +29,17 @@ export default function Home() {
           id="home"
           className="fds-section fds-section--paper fds-hero relative pb-2 sm:pb-3 px-4 sm:px-6 overflow-hidden border-b border-[#E1E8F0]/60"
         >
-          {/* z-0: Top-right hex rings decoration per PATTERN_SYSTEM.md (opacity: 0.52) */}
+          {/* Micro-pattern phụ: hero-hex-rings.svg ở góc trên phải, crop 25% (width: 210px, opacity: 0.64) */}
           <div
-            className="absolute top-2 right-0 lg:right-6 pointer-events-none opacity-[0.52] z-0"
+            className="hidden sm:block absolute -top-4 -right-8 pointer-events-none opacity-[0.64] z-0 select-none"
             aria-hidden="true"
           >
             <Image
               src="/fds/decorations/hero-hex-rings.svg"
               alt=""
-              width={260}
-              height={240}
-              className="w-44 sm:w-56 h-auto fds-decorative"
-              draggable={false}
-            />
-          </div>
-
-          {/* z-0: Technical corner lines at top-right (opacity: 0.45) */}
-          <div
-            className="hidden sm:block absolute top-8 right-4 pointer-events-none opacity-45 z-0"
-            aria-hidden="true"
-          >
-            <Image
-              src="/fds/decorations/technical-corner-lines.svg"
-              alt=""
-              width={160}
-              height={160}
-              className="w-28 h-auto fds-decorative"
+              width={210}
+              height={180}
+              className="w-[210px] h-auto fds-decorative select-none"
               draggable={false}
             />
           </div>
@@ -302,17 +287,17 @@ export default function Home() {
 
             {/* Right Side: Polaroid Photo Frame with tape & connector per approved-design.png (~46%) */}
             <div className="w-full relative flex items-center justify-center lg:justify-end pt-4 lg:pt-0">
-              {/* Connector line behind photo frame and metadata note (opacity: 0.55) */}
+              {/* Secondary micro-pattern: micro-node-line.svg gần note/ảnh (opacity: 0.68, width: 130px) */}
               <div
-                className="hidden sm:block absolute -top-4 right-8 pointer-events-none opacity-55 z-0"
+                className="hidden sm:block absolute -top-4 right-8 pointer-events-none opacity-[0.68] z-0 select-none"
                 aria-hidden="true"
               >
                 <Image
-                  src="/fds/decorations/about-note-connector.svg"
+                  src="/fds/decorations/micro-node-line.svg"
                   alt=""
-                  width={220}
-                  height={160}
-                  className="w-44 sm:w-52 h-auto fds-decorative"
+                  width={130}
+                  height={24}
+                  className="w-[130px] h-auto fds-decorative select-none"
                   draggable={false}
                 />
               </div>
@@ -397,6 +382,21 @@ export default function Home() {
           id="fields"
           className="fds-section fds-section--paper relative py-7 sm:py-7.5 px-4 sm:px-6 border-t border-[#E1E8F0]/80 overflow-hidden"
         >
+          {/* Micro-pattern phụ: technical-corner-lines.svg ở mép dưới trái section (width 140px, opacity 0.56) */}
+          <div
+            className="hidden sm:block absolute -bottom-4 -left-6 pointer-events-none opacity-[0.56] z-0 select-none"
+            aria-hidden="true"
+          >
+            <Image
+              src="/fds/decorations/technical-corner-lines.svg"
+              alt=""
+              width={140}
+              height={100}
+              className="w-[140px] h-auto fds-decorative select-none"
+              draggable={false}
+            />
+          </div>
+
           <div className="max-w-[1240px] mx-auto relative z-10">
             <div className="flex flex-col md:flex-row md:items-end justify-between mb-6 gap-4">
               <div>
@@ -591,16 +591,20 @@ export default function Home() {
             className="fds-panel-pattern -right-28 sm:-right-36 -bottom-20 sm:-bottom-28 w-[540px] sm:w-[660px] h-auto fds-decorative select-none"
           />
 
-          {/* Micro node line pattern connecting lettering to collage */}
-          <Image
-            src="/fds/decorations/micro-node-line.svg"
-            alt=""
-            width={160}
-            height={80}
+          {/* Micro-pattern phụ: micro-node-line.svg nối thị giác giữa copy và collage (width 140px, opacity 0.64) */}
+          <div
+            className="hidden sm:block absolute top-[40%] left-[45%] -translate-x-1/2 pointer-events-none opacity-[0.64] z-0 select-none"
             aria-hidden="true"
-            draggable={false}
-            className="fds-panel-pattern top-1/3 left-1/2 -translate-x-1/2 w-36 h-auto opacity-45 fds-decorative select-none hidden sm:block"
-          />
+          >
+            <Image
+              src="/fds/decorations/micro-node-line.svg"
+              alt=""
+              width={140}
+              height={24}
+              className="w-[140px] h-auto fds-decorative select-none"
+              draggable={false}
+            />
+          </div>
 
           <div className="fds-section-content max-w-[1240px] mx-auto grid lg:grid-cols-[11fr_14fr] gap-8 lg:gap-10 items-center">
             {/* Left Content: Editorial intro & activities without SaaS card box */}
@@ -841,6 +845,21 @@ export default function Home() {
           id="projects"
           className="fds-section fds-section--paper relative py-7 sm:py-7.5 px-4 sm:px-6 border-t border-[#E1E8F0]/80 overflow-hidden"
         >
+          {/* Hex rings pattern crop mạnh ở mép phải section (width: 185px, opacity: 0.48) */}
+          <div
+            className="hidden sm:block absolute top-6 -right-14 pointer-events-none opacity-[0.48] z-0 select-none"
+            aria-hidden="true"
+          >
+            <Image
+              src="/fds/decorations/hero-hex-rings.svg"
+              alt=""
+              width={185}
+              height={150}
+              className="w-[185px] h-auto fds-decorative select-none"
+              draggable={false}
+            />
+          </div>
+
           <div className="max-w-[1240px] mx-auto relative z-10">
             <div className="mb-4">
               <div className="fds-eyebrow mb-1.5">
@@ -875,6 +894,21 @@ export default function Home() {
             draggable={false}
             className="fds-panel-pattern -right-10 sm:-right-14 top-4 sm:top-6 w-[220px] sm:w-[260px] h-auto fds-decorative select-none"
           />
+
+          {/* Micro-pattern phụ: technical line ngắn ở mép dưới trái (width: 120px, opacity: 0.52) */}
+          <div
+            className="hidden sm:block absolute -bottom-4 -left-6 pointer-events-none opacity-[0.52] z-0 select-none"
+            aria-hidden="true"
+          >
+            <Image
+              src="/fds/decorations/technical-corner-lines.svg"
+              alt=""
+              width={120}
+              height={90}
+              className="w-[120px] h-auto fds-decorative select-none"
+              draggable={false}
+            />
+          </div>
 
           <div className="fds-section-content max-w-[1240px] mx-auto">
             <div className="mb-4">
@@ -1160,6 +1194,21 @@ export default function Home() {
                 className="hidden md:block absolute top-4 left-10 right-10 h-[2px] bg-[#2457A6]/25 -z-0"
                 aria-hidden="true"
               />
+
+              {/* Micro-pattern phụ: line mảnh chạy song song một đoạn ngắn với timeline (width 130px, opacity 0.52) */}
+              <div
+                className="hidden md:block absolute top-[11px] left-[32%] pointer-events-none opacity-[0.52] -z-0 select-none"
+                aria-hidden="true"
+              >
+                <Image
+                  src="/fds/decorations/micro-node-line.svg"
+                  alt=""
+                  width={130}
+                  height={14}
+                  className="w-[130px] h-auto fds-decorative select-none"
+                  draggable={false}
+                />
+              </div>
 
               <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6 relative z-10">
                 {/* Step 01 */}

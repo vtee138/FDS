@@ -70,28 +70,17 @@ body {
   overflow-x: hidden;
 }
 
-/* Selection trên nền sáng — dùng màu đặc chống cộng alpha giữa các dòng */
+/* Selection trên nền sáng */
 ::selection {
   color: #07152f;
-  background-color: #b9d0ed;
+  background: rgba(72, 126, 194, 0.28);
   text-shadow: none;
 }
 
 ::-moz-selection {
   color: #07152f;
-  background-color: #b9d0ed;
+  background: rgba(72, 126, 194, 0.28);
   text-shadow: none;
-}
-
-/* Selection riêng cho Hero title */
-.fds-hero-title ::selection {
-  color: #07152f;
-  background-color: #a9c5e8;
-}
-
-.fds-hero-title ::-moz-selection {
-  color: #07152f;
-  background-color: #a9c5e8;
 }
 
 /* Selection trong footer/navy section */
