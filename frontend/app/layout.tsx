@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Playfair_Display, Be_Vietnam_Pro, IBM_Plex_Mono } from 'next/font/google';
 import './globals.css';
+import { AuthProvider } from '@/lib/auth/AuthProvider';
 
 export const displayFont = Playfair_Display({
   subsets: ['latin', 'vietnamese'],
@@ -42,7 +43,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <span className="sr-only" aria-hidden="true">
           FDS Typography Preload
         </span>
-        {children}
+        <AuthProvider>{children}</AuthProvider>
       </body>
     </html>
   );
