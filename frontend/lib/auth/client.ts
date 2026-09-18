@@ -59,6 +59,8 @@ export async function loginClient(email: string, password: string): Promise<Auth
 export async function registerClient(input: {
   name: string;
   email: string;
+  studentId: string;
+  major: string;
   password: string;
 }): Promise<AuthUser> {
   const data = await apiFetch<unknown>("/register", {
@@ -66,6 +68,8 @@ export async function registerClient(input: {
     body: JSON.stringify({
       name: input.name.trim(),
       email: input.email.trim(),
+      studentId: input.studentId.trim().toUpperCase(),
+      major: input.major,
       password: input.password,
     }),
   });

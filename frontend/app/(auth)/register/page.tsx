@@ -8,13 +8,15 @@ import AuthField from "@/components/auth/AuthField";
 import PasswordField from "@/components/auth/PasswordField";
 import AuthAlert from "@/components/auth/AuthAlert";
 import { registerClient, AuthApiError } from "@/lib/auth/client";
-import { validateRegister } from "@/lib/auth/schemas";
+import { MAJORS, validateRegister } from "@/lib/auth/schemas";
 import { authRoutes } from "@/lib/auth/config";
 
 export default function RegisterPage() {
   const router = useRouter();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [studentId, setStudentId] = useState("");
+  const [major, setMajor] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
@@ -24,7 +26,14 @@ export default function RegisterPage() {
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
     setFormError(null);
-    const errors = validateRegister({ name, email, password, confirmPassword });
+    const errors = validateRegister({
+      name,
+      email,
+      studentId,
+      major,
+      password,
+      confirmPassword,
+    });
     if (errors) {
       setFieldErrors(errors);
       return;
@@ -32,7 +41,7 @@ export default function RegisterPage() {
     setFieldErrors({});
     setIsLoading(true);
     try {
-      await registerClient({ name, email, password });
+      await registerClient({ name, email, studentId, major, password });
       router.push(`${authRoutes.login}?registered=1`);
     } catch (err) {
       if (err instanceof AuthApiError) {
@@ -82,6 +91,54 @@ export default function RegisterPage() {
           onChange={(e) => setEmail(e.target.value)}
           error={fieldErrors.email}
         />
+        <AuthField
+          label="Mã số sinh viên"
+          id="studentId"
+          type="text"
+          autoComplete="off"
+          placeholder="SE123456"
+          value={studentId}
+          onChange={(e) => setStudentId(e.target.value.toUpperCase())}
+          error={fieldErrors.studentId}
+          hint="2 chữ cái + 6 chữ số, ví dụ SE123456."
+          maxLength={8}
+        />
+        <div className="flex flex-col gap-1.5">
+          <label
+            htmlFor="major"
+            className="text-xs font-semibold tracking-wide text-[#07152F] uppercase font-mono"
+          >
+            Chuyên ngành
+          </label>
+          <select
+            id="major"
+            value={major}
+            onChange={(e) => setMajor(e.target.value)}
+            aria-invalid={Boolean(fieldErrors.major)}
+            aria-describedby={fieldErrors.major ? "major-error" : undefined}
+            className={`w-full px-3.5 py-2.5 text-sm bg-white border rounded-[3px] outline-none transition ${
+              major ? "text-[#07152F]" : "text-[#94A3B8]"
+            } ${
+              fieldErrors.major
+                ? "border-red-400 focus:border-red-500 focus:ring-2 focus:ring-red-100"
+                : "border-[#E1E8F0] focus:border-[#2457A6] focus:ring-2 focus:ring-[#2457A6]/15"
+            }`}
+          >
+            <option value="" disabled>
+              -- Chọn chuyên ngành --
+            </option>
+            {MAJORS.map((m) => (
+              <option key={m} value={m}>
+                {m}
+              </option>
+            ))}
+          </select>
+          {fieldErrors.major ? (
+            <p id="major-error" role="alert" className="text-xs text-red-600">
+              {fieldErrors.major}
+            </p>
+          ) : null}
+        </div>
         <PasswordField
           label="Mật khẩu"
           id="new-password"

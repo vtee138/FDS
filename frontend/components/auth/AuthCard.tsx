@@ -1,5 +1,4 @@
 import type { ReactNode } from "react";
-import Link from "next/link";
 
 export default function AuthCard({
   eyebrow,
@@ -31,11 +30,6 @@ export default function AuthCard({
           {footer}
         </div>
       ) : null}
-      <div className="mt-4 text-center">
-        <Link href="/" className="fds-text-link text-xs font-semibold">
-          ← Về trang chủ FDS
-        </Link>
-      </div>
     </div>
   );
 }

@@ -2,6 +2,8 @@ export interface AuthUser {
   id: string | number;
   name: string;
   email: string;
+  studentId?: string;
+  major?: string;
   avatarUrl?: string | null;
   role?: string;
   emailVerified?: boolean;
@@ -32,6 +34,8 @@ export interface LoginInput {
 export interface RegisterInput {
   name: string;
   email: string;
+  studentId: string;
+  major: string;
   password: string;
 }
 

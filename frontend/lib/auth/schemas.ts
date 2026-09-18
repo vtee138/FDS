@@ -20,6 +20,41 @@ export function validateName(name: string): string | null {
   return null;
 }
 
+export const MAJORS = [
+  "Kỹ thuật Phần mềm",
+  "Trí tuệ Nhân tạo",
+  "An toàn Thông tin",
+  "Thiết kế Đồ họa",
+  "Truyền thông Đa phương tiện",
+  "Digital Marketing",
+  "Kinh doanh Quốc tế",
+  "Ngôn ngữ Anh",
+  "Ngôn ngữ Nhật",
+  "Ngôn ngữ Hàn",
+  "Ngành khác",
+] as const;
+
+const STUDENT_ID_RE = /^[A-Z]{2}\d{6}$/;
+
+export function normalizeStudentId(studentId: string): string {
+  return studentId.trim().toUpperCase();
+}
+
+export function validateStudentId(studentId: string): string | null {
+  const normalized = normalizeStudentId(studentId);
+  if (!normalized) return "Vui lòng nhập mã số sinh viên.";
+  if (!STUDENT_ID_RE.test(normalized))
+    return "MSSV gồm 2 chữ cái + 6 chữ số, ví dụ SE123456.";
+  return null;
+}
+
+export function validateMajor(major: string): string | null {
+  if (!major) return "Vui lòng chọn chuyên ngành.";
+  if (!(MAJORS as readonly string[]).includes(major))
+    return "Chuyên ngành chưa hợp lệ.";
+  return null;
+}
+
 export function validateLogin(input: {
   email: string;
   password: string;
@@ -34,6 +69,8 @@ export function validateLogin(input: {
 export function validateRegister(input: {
   name: string;
   email: string;
+  studentId: string;
+  major: string;
   password: string;
   confirmPassword: string;
 }): FieldErrors | null {
@@ -42,6 +79,10 @@ export function validateRegister(input: {
   if (nameErr) errors.name = nameErr;
   const emailErr = validateEmail(input.email);
   if (emailErr) errors.email = emailErr;
+  const studentIdErr = validateStudentId(input.studentId);
+  if (studentIdErr) errors.studentId = studentIdErr;
+  const majorErr = validateMajor(input.major);
+  if (majorErr) errors.major = majorErr;
   const pwErr = validatePassword(input.password);
   if (pwErr) errors.password = pwErr;
   if (input.confirmPassword !== input.password)
