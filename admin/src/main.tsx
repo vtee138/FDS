@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import { Activity, CalendarDays, Inbox, LayoutDashboard, Send, Users } from 'lucide-react';
+import { Activity, CalendarDays, Inbox, LayoutDashboard, LogOut, Send, Users } from 'lucide-react';
 import './styles.css';
 
 type ClubOverview = {
@@ -39,20 +39,43 @@ const fallback: ClubOverview = {
 
 function useClubData() {
   const [data, setData] = React.useState<ClubOverview>(fallback);
-  const [status, setStatus] = React.useState('Fallback mode');
+  const [status, setStatus] = React.useState('Loading...');
 
   React.useEffect(() => {
+    // 1. Check for token in URL hash (SSO from frontend)
+    if (window.location.hash) {
+      const params = new URLSearchParams(window.location.hash.substring(1));
+      const token = params.get('token');
+      if (token) localStorage.setItem('adminAccessToken', token);
+      
+      // Clean up URL hash
+      window.history.replaceState(null, '', window.location.pathname);
+    }
+
+    // 2. Fetch data using token
+    const token = localStorage.getItem('adminAccessToken');
     const apiUrl = import.meta.env.VITE_API_URL ?? 'http://localhost:4000';
-    fetch(`${apiUrl}/club`)
+    
+    fetch(`${apiUrl}/club`, {
+      headers: {
+        ...(token ? { 'Authorization': `Bearer ${token}` } : {})
+      }
+    })
       .then((response) => {
-        if (!response.ok) throw new Error('API unavailable');
+        if (!response.ok) {
+          if (response.status === 401) throw new Error('Unauthorized');
+          throw new Error('API unavailable');
+        }
         return response.json();
       })
       .then((payload) => {
         setData(payload);
         setStatus('Connected');
       })
-      .catch(() => setStatus('API offline'));
+      .catch((err) => {
+        if (err.message === 'Unauthorized') setStatus('Unauthorized - Please login');
+        else setStatus('API offline (Fallback mode)');
+      });
   }, []);
 
   return { data, status };
@@ -67,6 +90,26 @@ function App() {
     { label: 'Messages', value: data.metrics.messages, icon: Inbox },
   ];
 
+  const handleLogout = async () => {
+    const apiUrl = import.meta.env.VITE_API_URL ?? 'http://localhost:4000';
+
+    // Call backend logout API to revoke refresh token cookie
+    try {
+      await fetch(`${apiUrl}/auth/logout`, {
+        method: 'POST',
+        credentials: 'include',
+      });
+    } catch {
+      // Ignore errors — we still clear local state
+    }
+
+    // Clear access token from localStorage
+    localStorage.removeItem('adminAccessToken');
+
+    // Redirect to frontend login page with logout flag
+    window.location.href = 'http://localhost:3000/auth?logout=true';
+  };
+
   return (
     <main className="shell">
       <aside className="sidebar">
@@ -77,6 +120,9 @@ function App() {
           <a><CalendarDays size={18} /> Events</a>
           <a><Inbox size={18} /> Messages</a>
         </nav>
+        <button className="logout-btn" onClick={handleLogout}>
+          <LogOut size={18} /> Đăng xuất
+        </button>
       </aside>
 
       <section className="content">

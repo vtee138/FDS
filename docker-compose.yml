@@ -28,11 +28,23 @@ services:
     environment:
       PORT: 4000
       DATABASE_URL: postgresql://fds:fds_password@postgres:5432/fds_db?schema=public
+      # Browser origins for CORS
       FRONTEND_ORIGIN: http://localhost:3000
       ADMIN_ORIGIN: http://localhost:5173
+      JWT_SECRET: fds_jwt_secret_change_me_in_prod
+      JWT_REFRESH_SECRET: fds_jwt_refresh_secret_change_me_in_prod
+      GOOGLE_CLIENT_ID: abcxyz123
+      GOOGLE_CLIENT_SECRET: abcxyz123
+      GOOGLE_CALLBACK_URL: http://localhost:4000/auth/google/callback
     ports:
       - "4000:4000"
     command: sh -c "npx prisma migrate deploy && npx prisma db seed && node dist/src/main.js"
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:4000/club || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 6
+      start_period: 20s
 
   frontend:
     build:
@@ -40,11 +52,26 @@ services:
     container_name: fds-frontend
     restart: unless-stopped
     depends_on:
-      - backend
+      backend:
+        condition: service_healthy
     environment:
+      NODE_ENV: production
+      # URL backend cho browser (client-side) — phải là localhost
       NEXT_PUBLIC_API_URL: http://localhost:4000
+      # URL backend nội bộ cho SSR (server-side) trong container
+      INTERNAL_API_URL: http://backend:4000
+      # Dùng cho Next.js auth callbacks & redirect (trỏ về host bên ngoài)
+      NEXTAUTH_URL: http://localhost:3000
+      # Trang authentication mặc định khi redirect
+      NEXTAUTH_SECRET: fds_nextauth_secret_change_me_in_prod
     ports:
       - "3000:3000"
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:3000 || exit 1"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
 
   admin:
     build:
@@ -52,7 +79,8 @@ services:
     container_name: fds-admin
     restart: unless-stopped
     depends_on:
-      - backend
+      backend:
+        condition: service_healthy
     environment:
       VITE_API_URL: http://localhost:4000
     ports:

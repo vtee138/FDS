@@ -1,0 +1,2 @@
+ALTER TYPE "Role" ADD VALUE 'MEMBER';
+UPDATE "User" SET role = 'MEMBER' WHERE role = 'USER';

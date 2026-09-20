@@ -34,3 +34,28 @@ npm --prefix frontend run dev
 npm --prefix admin install
 npm --prefix admin run dev
 ```
+
+## Cấu hình Google OAuth
+
+Để tính năng "Đăng nhập bằng Google" hoạt động, bạn cần cung cấp thông tin Client ID và Client Secret từ Google Cloud:
+
+1. Truy cập [Google Cloud Console](https://console.cloud.google.com/).
+2. Tạo dự án mới hoặc chọn dự án hiện có.
+3. Chuyển đến mục **APIs & Services > Credentials**.
+4. Tạo **OAuth client ID** mới (Loại ứng dụng: Web application).
+5. Thêm URI chuyển hướng (Authorized redirect URIs): `http://localhost:4000/auth/google/callback`
+6. Mở file `docker-compose.yml` trong mã nguồn và cập nhật phần `environment` của service `backend`:
+
+```yaml
+    environment:
+      # ... các cấu hình khác ...
+      GOOGLE_CLIENT_ID: "Client-ID-của-bạn-tại-đây"
+      GOOGLE_CLIENT_SECRET: "Client-Secret-của-bạn-tại-đây"
+      GOOGLE_CALLBACK_URL: "http://localhost:4000/auth/google/callback"
+```
+
+Sau khi sửa file cấu hình, hãy khởi động lại ứng dụng bằng lệnh:
+
+```bash
+docker compose up -d
+```

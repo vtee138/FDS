@@ -4,9 +4,10 @@ import { ClubController } from './club.controller';
 import { ClubService } from './club.service';
 import { ContactController } from './contact.controller';
 import { PrismaService } from './prisma.service';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
-  imports: [ConfigModule.forRoot({ isGlobal: true })],
+  imports: [ConfigModule.forRoot({ isGlobal: true }), AuthModule],
   controllers: [ClubController, ContactController],
   providers: [ClubService, PrismaService],
 })
