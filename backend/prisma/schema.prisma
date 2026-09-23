@@ -5,68 +5,40 @@ generator client {
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
 enum Role {
-  MEMBER
-  ADMIN
+  GUEST  @map("guest")
+  MEMBER @map("member")
+  ADMIN  @map("admin")
 }
 
 model User {
-  id             Int            @id @default(autoincrement())
-  email          String         @unique
-  password       String?        // bcrypt hash (null for Google OAuth users)
-  name           String
-  googleId       String?        @unique
-  role           Role           @default(MEMBER)
-  createdAt      DateTime       @default(now())
-  updatedAt      DateTime       @updatedAt
-  refreshTokens  RefreshToken[]
+  id           BigInt    @id @default(autoincrement()) @db.BigInt
+  email        String    @unique(map: "user_email_key") @db.VarChar(255)
+  passwordHash String?   @map("password_hash") @db.VarChar(255)
+  // These two fields retain the website's existing registration and Google OAuth data.
+  name         String    @db.VarChar(255)
+  googleId     String?   @unique(map: "user_google_id_key") @map("google_id") @db.VarChar(255)
+  role         Role      @default(GUEST)
+  createdAt    DateTime  @default(now()) @map("create_at") @db.Timestamp(3)
+  updatedAt    DateTime  @updatedAt @map("update_at") @db.Timestamp(3)
+  sessions     Session[]
+
+  @@map("user")
 }
 
-model RefreshToken {
-  id        Int      @id @default(autoincrement())
-  token     String   @unique
-  userId    Int
-  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  expiresAt DateTime
-  createdAt DateTime @default(now())
-}
+model Session {
+  id           BigInt   @id @default(autoincrement()) @db.BigInt
+  userId       BigInt?  @map("user_id") @db.BigInt
+  user         User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  sessionToken String   @unique(map: "session_session_token_key") @map("session_token") @db.VarChar(255)
+  ipAddress    String?  @map("ip_address") @db.VarChar(45)
+  userAddress  String   @map("user_address") @db.Text
+  expiresAt    DateTime @map("expires_at") @db.Timestamp(3)
 
-model ClubProfile {
-  id          Int      @id @default(1)
-  name        String
-  acronym     String
-  slogan      String
-  university  String
-  foundedYear Int
-  description String
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-}
-
-model Program {
-  id          Int      @id @default(autoincrement())
-  title       String
-  category    String
-  description String
-  impact      String
-  createdAt   DateTime @default(now())
-}
-
-model Event {
-  id          Int      @id @default(autoincrement())
-  title       String
-  date        DateTime
-  location    String
-  description String
-  createdAt   DateTime @default(now())
-}
-
-model ContactMessage {
-  id        Int      @id @default(autoincrement())
-  name      String
-  email     String
-  message   String
-  createdAt DateTime @default(now())
+  @@index([userId], map: "session_user_id_idx")
+  @@index([expiresAt], map: "session_expires_at_idx")
+  @@map("session")
 }

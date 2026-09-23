@@ -1,6 +1,5 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, NotImplementedException, Post } from '@nestjs/common';
 import { IsEmail, IsNotEmpty, MinLength } from 'class-validator';
-import { PrismaService } from './prisma.service';
 
 class CreateContactDto {
   @IsNotEmpty()
@@ -15,10 +14,10 @@ class CreateContactDto {
 
 @Controller('contact')
 export class ContactController {
-  constructor(private readonly prisma: PrismaService) {}
-
   @Post()
-  create(@Body() data: CreateContactDto) {
-    return this.prisma.contactMessage.create({ data });
+  create(@Body() _data: CreateContactDto) {
+    throw new NotImplementedException(
+      'Contact-message storage is not enabled in the two-table database design.',
+    );
   }
 }

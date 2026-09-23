@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Playfair_Display, Be_Vietnam_Pro, IBM_Plex_Mono } from 'next/font/google';
+import SessionTracker from '../components/SessionTracker';
 import './globals.css';
 
 export const displayFont = Playfair_Display({
@@ -39,6 +40,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       className={`${displayFont.variable} ${sansFont.variable} ${monoFont.variable} scroll-smooth`}
     >
       <body className="font-sans antialiased text-[#07152F]">
+        <SessionTracker />
         <span className="sr-only" aria-hidden="true">
           FDS Typography Preload
         </span>

@@ -1,33 +1,15 @@
 services:
-  postgres:
-    image: postgres:16-alpine
-    container_name: fds-postgres
-    restart: unless-stopped
-    environment:
-      POSTGRES_USER: fds
-      POSTGRES_PASSWORD: fds_password
-      POSTGRES_DB: fds_db
-    ports:
-      - "5433:5432"
-    volumes:
-      - fds_postgres_data:/var/lib/postgresql/data
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U fds -d fds_db"]
-      interval: 5s
-      timeout: 5s
-      retries: 12
-
   backend:
     build:
       context: ./backend
     container_name: fds-backend
     restart: unless-stopped
-    depends_on:
-      postgres:
-        condition: service_healthy
+    # Loaded at container runtime, not copied into the image. It supplies the
+    # Supabase pooler DATABASE_URL and migration-only DIRECT_URL.
+    env_file:
+      - ./backend/.env
     environment:
       PORT: 4000
-      DATABASE_URL: postgresql://fds:fds_password@postgres:5432/fds_db?schema=public
       # Browser origins for CORS
       FRONTEND_ORIGIN: http://localhost:3000
       ADMIN_ORIGIN: http://localhost:5173
@@ -38,7 +20,6 @@ services:
       GOOGLE_CALLBACK_URL: http://localhost:4000/auth/google/callback
     ports:
       - "4000:4000"
-    command: sh -c "npx prisma migrate deploy && npx prisma db seed && node dist/src/main.js"
     healthcheck:
       test: ["CMD-SHELL", "wget -qO- http://localhost:4000/club || exit 1"]
       interval: 10s
@@ -85,6 +66,3 @@ services:
       VITE_API_URL: http://localhost:4000
     ports:
       - "5173:80"
-
-volumes:
-  fds_postgres_data:
