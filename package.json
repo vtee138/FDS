@@ -7,9 +7,9 @@
     "dev:frontend": "npm --prefix frontend run dev",
     "dev:admin": "npm --prefix admin run dev",
     "dev:backend": "npm --prefix backend run start:dev",
-    "db:up": "docker compose up -d postgres",
+    "db:up": "npm --prefix backend run prisma:deploy",
     "db:down": "docker compose down",
-    "docker:up": "docker compose up --build",
+    "docker:up": "npm run db:up && docker compose up --build",
     "docker:down": "docker compose down"
   }
 }

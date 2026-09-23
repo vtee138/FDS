@@ -1,10 +1,11 @@
 const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:4000";
 
 export type AuthUser = {
-  id: number;
+  // PostgreSQL BIGINT IDs are returned as strings to avoid JavaScript precision loss.
+  id: string;
   email: string;
   name: string;
-  role: "MEMBER" | "ADMIN";
+  role: "GUEST" | "MEMBER" | "ADMIN";
 };
 
 export type AuthResponse = {

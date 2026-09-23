@@ -11,21 +11,18 @@ docker compose up --build
 - Frontend: http://localhost:3000
 - Admin: http://localhost:5173
 - Backend API: http://localhost:4000
-- PostgreSQL: localhost:5433
+- Database: the Supabase project configured in `backend/.env`
 
-Backend tự chờ PostgreSQL healthy, chạy Prisma migration, seed dữ liệu mẫu và kết nối qua:
-
-```txt
-postgresql://fds:fds_password@postgres:5432/fds_db?schema=public
-```
+Docker loads `backend/.env` only when the backend container starts; `.env` is
+excluded from the image. Run `npm run docker:up` to deploy pending migrations
+from the host's direct connection before Docker starts the API through the
+Supabase pooler.
 
 ## Chạy dev cục bộ
 
 ```bash
-npm run db:up
 npm --prefix backend install
-$env:DATABASE_URL="postgresql://fds:fds_password@localhost:5433/fds_db?schema=public"
-npm --prefix backend run prisma:migrate
+npm --prefix backend run prisma:deploy
 npm --prefix backend run start:dev
 
 npm --prefix frontend install
